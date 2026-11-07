@@ -1,0 +1,25 @@
+{
+  "name": "ShareWave",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": ["--name", "sharewave-dev"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpp-devtools",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-themes",
+        "unifiedjs.vscode-mdx",
+        "llvm-vs-code-extensions.vscode-clangd"
+      ]
+    }
+  },
+  "mounts": [
+    "source=sharewave-conan-cache,target=/root/.conan2,type=volume"
+  ],
+  "postStartCommand": "bash /workspaces/ShareWave/.devcontainer/entrypoint.sh"
+}
