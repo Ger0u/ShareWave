@@ -1,0 +1,11 @@
+[requires]
+boost/1.91.0
+openssl/4.1.0
+libsodium/1.0.22
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout
