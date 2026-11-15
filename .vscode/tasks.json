@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Собрать профиль",
+            "type": "shell",
+            "command": "bash scripts/build-profile.sh ${input:profile}",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "profile",
+            "type": "pickString",
+            "description": "Выбери профиль",
+            "options": [
+                "clang-debug",
+                "clang-debug-asan",
+                "clang-debug-tsan",
+                "clang-release",
+                "clang-release-asan",
+                "gcc-release"
+            ],
+            "default": "clang-debug"
+        }
+    ]
+}

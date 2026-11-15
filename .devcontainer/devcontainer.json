@@ -23,5 +23,5 @@
   "mounts": [
     "source=sharewave-conan-cache,target=/root/.conan2,type=volume"
   ],
-  "postStartCommand": "bash /workspaces/ShareWave/.devcontainer/entrypoint.sh"
+  "postStartCommand": "bash /workspaces/ShareWave/scripts/build-profile.sh clang-debug"
 }
