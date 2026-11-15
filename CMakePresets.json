@@ -1,0 +1,105 @@
+{
+  "version": 10,
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "clang-debug",
+      "displayName": "Clang Debug",
+      "inherits": "base",
+      "binaryDir": "${sourceDir}/build/clang/Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/clang/Debug/generators/conan_toolchain.cmake"
+      }
+    },
+    {
+      "name": "clang-debug-asan",
+      "displayName": "Clang Debug ASan + UBSan",
+      "inherits": "base",
+      "binaryDir": "${sourceDir}/build/clang/ASan/Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/clang/ASan/Debug/generators/conan_toolchain.cmake",
+        "CMAKE_CXX_FLAGS": "-fsanitize=address,undefined -fno-omit-frame-pointer -g"
+      }
+    },
+    {
+      "name": "clang-debug-tsan",
+      "displayName": "Clang Debug TSan",
+      "inherits": "base",
+      "binaryDir": "${sourceDir}/build/clang/TSan/Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/clang/TSan/Debug/generators/conan_toolchain.cmake",
+        "CMAKE_CXX_FLAGS": "-fsanitize=thread -fno-omit-frame-pointer -g -O1"
+      }
+    },
+    {
+      "name": "clang-release",
+      "displayName": "Clang Release",
+      "inherits": "base",
+      "binaryDir": "${sourceDir}/build/clang/Release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/clang/Release/generators/conan_toolchain.cmake"
+      }
+    },
+    {
+      "name": "clang-release-asan",
+      "displayName": "Clang Release -O1 ASan + UBSan",
+      "inherits": "base",
+      "binaryDir": "${sourceDir}/build/clang/ASan/Release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/clang/ASan/Release/generators/conan_toolchain.cmake",
+        "CMAKE_CXX_FLAGS": "-O1 -fsanitize=address,undefined -fno-omit-frame-pointer -g"
+      }
+    },
+    {
+      "name": "gcc-release",
+      "displayName": "GCC Release",
+      "inherits": "base",
+      "binaryDir": "${sourceDir}/build/gcc/Release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/gcc/Release/generators/conan_toolchain.cmake",
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "clang-debug",
+      "configurePreset": "clang-debug"
+    },
+    {
+      "name": "clang-debug-asan",
+      "configurePreset": "clang-debug-asan"
+    },
+    {
+      "name": "clang-debug-tsan",
+      "configurePreset": "clang-debug-tsan"
+    },
+    {
+      "name": "clang-release",
+      "configurePreset": "clang-release"
+    },
+    {
+      "name": "clang-release-asan",
+      "configurePreset": "clang-release-asan"
+    },
+    {
+      "name": "gcc-release",
+      "configurePreset": "gcc-release"
+    }
+  ]
+}
