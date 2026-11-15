@@ -2,6 +2,7 @@ FROM debian:13.7
 
 RUN apt-get update && apt-get install -y \
     clang \
+    clangd \
     cmake \
     git \
     libc++-dev \

@@ -8,14 +8,16 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-vscode.cpptools",
-        "ms-vscode.cpp-devtools",
+        "llvm-vs-code-extensions.vscode-clangd",
         "ms-vscode.cmake-tools",
-        "ms-vscode.cpptools-extension-pack",
-        "ms-vscode.cpptools-themes",
-        "unifiedjs.vscode-mdx",
-        "llvm-vs-code-extensions.vscode-clangd"
-      ]
+        "unifiedjs.vscode-mdx"
+      ],
+      "settings": {
+        "clangd.arguments": [
+          "--compile-commands-dir=${containerWorkspaceFolder}/build/clang/Debug"
+        ],
+        "clangd.onConfigChanged": "restart"
+      }
     }
   },
   "mounts": [
