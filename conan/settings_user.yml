@@ -1,0 +1,5 @@
+compiler:
+    clang:
+        sanitizer: [null, Address, Thread, Memory, UndefinedBehavior, AddressUndefinedBehavior]
+    gcc:
+        sanitizer: [null, Address, Thread, UndefinedBehavior, AddressUndefinedBehavior]

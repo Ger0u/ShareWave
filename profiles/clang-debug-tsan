@@ -1,0 +1,13 @@
+include(clang-base)
+
+[settings]
+build_type=Debug
+compiler.sanitizer=Thread
+
+[conf]
+tools.build:cxxflags=["-stdlib=libc++", "-fsanitize=thread", "-fno-omit-frame-pointer", "-g", "-O1"]
+tools.build:cflags=["-stdlib=libc++", "-fsanitize=thread", "-fno-omit-frame-pointer", "-g", "-O1"]
+tools.build:exelinkflags=["-stdlib=libc++", "-fsanitize=thread"]
+
+[runenv]
+TSAN_OPTIONS=halt_on_error=1

@@ -2,4 +2,6 @@
 set -e
 
 cd /workspaces/ShareWave
-conan install . --build=missing -s build_type=Debug --profile:host=profiles/clang --profile:build=profiles/clang -o "boost/*:without_cobalt=True"
+conan profile detect --force
+conan config install conan/settings_user.yml
+conan install . --build=missing --output-folder=build/clang --profile=profiles/clang-debug -o "boost/*:without_cobalt=True"
