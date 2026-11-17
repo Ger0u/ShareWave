@@ -10,4 +10,9 @@ find_package(OpenSSL REQUIRED)
 find_package(libsodium REQUIRED)
 
 add_subdirectory(src)
-# add_subdirectory(tests)
+
+option(SHAREWAVE_ENABLE_TESTING "Enable testing" ${PROJECT_IS_TOP_LEVEL})
+if(SHAREWAVE_ENABLE_TESTING)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
