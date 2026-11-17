@@ -8,6 +8,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "github.vscode-github-actions",
         "llvm-vs-code-extensions.vscode-clangd",
         "ms-vscode.cmake-tools",
         "unifiedjs.vscode-mdx"
