@@ -30,7 +30,16 @@ case "$PROFILE" in
 esac
 
 echo "=== Conan install для профиля $PROFILE ==="
-conan install . --build=missing --output-folder="$OUTPUT/.." --profile="profiles/$PROFILE" -o "boost/*:without_cobalt=True"
+
+CONAN_OPTS=(-o "boost/*:without_cobalt=True")
+
+if [ "$PROFILE" = "clang-debug-tsan" ]; then
+    CONAN_OPTS+=(-o "boost/*:extra_b2_flags=thread-sanitizer=on")
+fi
+
+conan remove "gtest/*"
+
+conan install . --build=missing --output-folder="$OUTPUT/.." --profile="profiles/$PROFILE" "${CONAN_OPTS[@]}"
 
 echo "=== CMake preset $PROFILE ==="
 cmake --preset "$PROFILE"
